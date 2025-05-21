@@ -1,10 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./ticket-details.module.css";
-import { Button, Spin } from "antd";
+import { Button } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
-import { Ticket } from "@acme/shared-models";
-import { ticketApi } from "client/src/api/ticket";
 import Assignee from "../assignee/assignee";
 import Status from "../status/status";
 import { useAppSelector } from "client/src/redux/hooks";
@@ -33,21 +30,24 @@ export function TicketDetails(props: TicketDetailsProps) {
         ></Button>
         <h1>Welcome to TicketDetails!</h1>
       </div>
-
-      <div className={styles["body"]}>
-        <div className={styles["row"]}>
-          <div>Description:</div>
-          <div>{ticketDetail?.description}</div>
+      {ticketDetail ? (
+        <div className={styles["body"]}>
+          <div className={styles["row"]}>
+            <div>Description:</div>
+            <div>{ticketDetail?.description}</div>
+          </div>
+          <div className={styles["row"]}>
+            <div>Status:</div>
+            <Status currentTicket={ticketDetail} />
+          </div>
+          <div className={styles["row"]}>
+            <div>Assignee:</div>
+            <Assignee currentTicket={ticketDetail} />
+          </div>
         </div>
-        <div className={styles["row"]}>
-          <div>Status:</div>
-          <Status currentTicket={ticketDetail} />
-        </div>
-        <div className={styles["row"]}>
-          <div>Assignee:</div>
-          <Assignee currentTicket={ticketDetail} />
-        </div>
-      </div>
+      ) : (
+        <div>Ticket not exist</div>
+      )}
     </div>
   );
 }

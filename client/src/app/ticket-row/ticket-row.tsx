@@ -18,7 +18,7 @@ export function TicketRow(props: TicketRowProps) {
       </Link>
       <div className={styles["right"]}>
         <Status currentTicket={ticket} />
-        <Assignee currentTicket={ticket} />
+        <Assignee />
       </div>
     </div>
   );
