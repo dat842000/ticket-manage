@@ -1,7 +1,19 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+}

@@ -5,11 +5,12 @@ import styles from "./app.module.css";
 import Tickets from "./tickets/tickets";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { appActions } from "../redux/app/slice";
+import { selectTickets } from "../redux/app/selectors";
+import TicketDetails from "./ticket-details/ticket-details";
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const tickets = useAppSelector((state) => state.app.tickets);
-  const users = useAppSelector((state) => state.app.users);
+  const tickets = useAppSelector(selectTickets);
 
   useEffect(() => {
     dispatch(appActions.getAppData());
@@ -20,7 +21,7 @@ const App = () => {
       <h1>Ticketing App</h1>
       <Routes>
         <Route path="/" element={<Tickets tickets={tickets} />} />
-        <Route path="/:id" element={<h2>Details Not Implemented</h2>} />
+        <Route path="/:id" element={<TicketDetails />} />
       </Routes>
     </div>
   );
