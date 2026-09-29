@@ -81,7 +81,7 @@ export function Tickets(props: TicketsProps) {
       </div>
       {!isLoading ? (
         tickets.length > 0 ? (
-          <div>
+          <div className={styles["tickets-container"]}>
             {tickets.map((t) => (
               <TicketRow key={t.id} ticket={t} />
             ))}
